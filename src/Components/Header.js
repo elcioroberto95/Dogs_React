@@ -13,7 +13,7 @@ const Header = () => {
           Login/Criar Login
         </Link>
       </nav>
-    </div>
+    </header>
   );
 };
 
