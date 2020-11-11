@@ -4,6 +4,11 @@ const types = {
     regex: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
     message: 'Preencha um email valido',
   },
+  password: {
+    regex: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
+    message:
+      'Mínimo de oito caracteres, pelo menos uma letra maiúscula, uma letra minúscula e um número .',
+  },
 };
 const useForm = (type) => {
   const [value, setValue] = React.useState('');
