@@ -25,7 +25,7 @@ export const UserStorage = ({ children }) => {
     const tokenRest = await fetch(url, options);
     const json = await tokenRest.json();
     setData(json);
-    console.log(json);
+
     setLogin(true);
   }
 
