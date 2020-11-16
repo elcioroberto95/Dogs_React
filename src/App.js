@@ -9,6 +9,7 @@ import './App.css';
 import User from './Components/User/User';
 import Photo from './Components/Photo/Photo';
 import ProtectedRoutes from './Helper/ProtectedRoutes';
+import UserProfile from './Components/User/UserProfile';
 const App = () => {
   return (
     <div>
@@ -20,6 +21,7 @@ const App = () => {
             <Route path="login/*" element={<Login />} />
             <ProtectedRoutes path="conta/*" element={<User />} />
             <Route path="foto/:id" element={<Photo />} />
+            <Route path="perfil/:user" element={<UserProfile />} />
           </Routes>
           <Footer />
         </UserStorage>
