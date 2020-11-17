@@ -6,13 +6,14 @@ import Input from '../Form/Input';
 import { PASSWORD_LOST } from '../../Api';
 import Error from '../../Helper/Error';
 const LoginPasswordLost = () => {
-  const email = useForm();
+  const login = useForm();
   const { data, loading, error, request } = useFetch();
   async function handleSubmit(event) {
     event.preventDefault();
-    if (email.validate()) {
+
+    if (login.validate()) {
       const { url, options } = PASSWORD_LOST({
-        email: email.value,
+        login: login.value,
         url: window.location.href.replace('perdeu', 'resetar'),
       });
       const { json } = await request(url, options);
@@ -26,7 +27,7 @@ const LoginPasswordLost = () => {
         <p style={{ color: '#4c1' }}>{data}</p>
       ) : (
         <form onSubmit={handleSubmit}>
-          <Input label="Email/Usuario" type="text" name="email" {...email} />
+          <Input label="Email/Usuario" type="text" name="email" {...login} />
           {loading ? <Button>Enviando</Button> : <Button>Enviar email</Button>}
           <Error error={error} />
         </form>
