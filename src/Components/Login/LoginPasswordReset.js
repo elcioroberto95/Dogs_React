@@ -1,12 +1,12 @@
 import React from 'react';
-import useFetch from '../../Hooks/useFetch';
+import Input from '../Forms/Input';
+import Button from '../Forms/Button';
 import useForm from '../../Hooks/useForm';
-import Button from '../Form/Button';
+import useFetch from '../../Hooks/useFetch';
 import { PASSWORD_RESET } from '../../Api';
-import Input from '../Form/Input';
-import Error from '../../Helper/Error';
+import Error from '../Helper/Error';
 import { useNavigate } from 'react-router-dom';
-import Head from '../../Helper/Head';
+import Head from '../Helper/Head';
 
 const LoginPasswordReset = () => {
   const [login, setLogin] = React.useState('');
@@ -31,31 +31,30 @@ const LoginPasswordReset = () => {
         key,
         password: password.value,
       });
-
       const { response } = await request(url, options);
       if (response.ok) navigate('/login');
     }
   }
 
   return (
-    <div>
-      <Head title="Resete sua senha" />
-      <h1 className="title">Reset a senha</h1>
+    <section className="animeLeft">
+      <Head title="Resete a senha" />
+      <h1 className="title">Resete a Senha</h1>
       <form onSubmit={handleSubmit}>
         <Input
-          label="Nova senha"
+          label="Nova Senha"
           type="password"
           name="password"
           {...password}
         />
         {loading ? (
-          <Button disabled>Carregando...</Button>
+          <Button disabled>Resetando...</Button>
         ) : (
           <Button>Resetar</Button>
         )}
-        <Error error={error} />
       </form>
-    </div>
+      <Error error={error} />
+    </section>
   );
 };
 

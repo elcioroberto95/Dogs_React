@@ -1,17 +1,18 @@
 import React from 'react';
+import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Footer from './Components/Footer';
 import Header from './Components/Header';
+import Footer from './Components/Footer';
 import Home from './Components/Home';
 import Login from './Components/Login/Login';
 import { UserStorage } from './UserContext';
-import './App.css';
 import User from './Components/User/User';
+import ProtectedRoute from './Components/Helper/ProtectedRoute';
 import Photo from './Components/Photo/Photo';
-import ProtectedRoutes from './Helper/ProtectedRoutes';
 import UserProfile from './Components/User/UserProfile';
 import NotFound from './Components/NotFound';
-const App = () => {
+
+function App() {
   return (
     <div className="App">
       <BrowserRouter>
@@ -21,7 +22,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="login/*" element={<Login />} />
-              <ProtectedRoutes path="conta/*" element={<User />} />
+              <ProtectedRoute path="conta/*" element={<User />} />
               <Route path="foto/:id" element={<Photo />} />
               <Route path="perfil/:user" element={<UserProfile />} />
               <Route path="*" element={<NotFound />} />
@@ -32,6 +33,6 @@ const App = () => {
       </BrowserRouter>
     </div>
   );
-};
+}
 
 export default App;

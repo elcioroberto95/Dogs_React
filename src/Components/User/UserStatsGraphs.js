@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './UserStatsGraphs.module.css';
 import { VictoryPie, VictoryChart, VictoryBar } from 'victory';
+
 const UserStatsGraphs = ({ data }) => {
   const [graph, setGraph] = React.useState([]);
   const [total, setTotal] = React.useState(0);
@@ -9,20 +10,20 @@ const UserStatsGraphs = ({ data }) => {
     const graphData = data.map((item) => {
       return {
         x: item.title,
-        y: item.acessos,
+        y: Number(item.acessos),
       };
     });
-    setGraph(graphData);
 
     setTotal(
       data.map(({ acessos }) => Number(acessos)).reduce((a, b) => a + b),
     );
+    setGraph(graphData);
   }, [data]);
 
   return (
     <section className={`${styles.graph} animeLeft`}>
       <div className={`${styles.total} ${styles.graphItem}`}>
-        <p>Acessos:{total}</p>
+        <p>Acessos: {total}</p>
       </div>
       <div className={styles.graphItem}>
         <VictoryPie
@@ -44,8 +45,8 @@ const UserStatsGraphs = ({ data }) => {
       </div>
       <div className={styles.graphItem}>
         <VictoryChart>
-          <VictoryBar data={graph} alignment="start"></VictoryBar>
-        </VictoryChart>{' '}
+          <VictoryBar alignment="start" data={graph}></VictoryBar>
+        </VictoryChart>
       </div>
     </section>
   );

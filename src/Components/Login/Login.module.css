@@ -4,16 +4,20 @@
   min-height: 100vh;
   gap: 2rem;
 }
+
 .login::before {
   display: block;
   content: '';
-  background: url('../../Assets/login.jpg') no-repeat center;
+  background: url('../../Assets/login.jpg') no-repeat center center;
   background-size: cover;
 }
-.form {
+
+.forms {
   max-width: 30rem;
   padding: 1rem;
+  margin-top: 20vh;
 }
+
 @media (max-width: 40rem) {
   .login {
     grid-template-columns: 1fr;
@@ -21,7 +25,7 @@
   .login::before {
     display: none;
   }
-  .form {
+  .forms {
     max-width: 100%;
   }
 }
